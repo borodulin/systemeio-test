@@ -12,14 +12,14 @@ class CouponFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $manager->persist((new Coupon())
-            ->setCode('D15')
+            ->setCode('F10')
             ->setType(CouponTypeEnum::Fixed)
-            ->setValue('15'));
+            ->setValue('10'));
 
         $manager->persist((new Coupon())
-            ->setCode('P10')
+            ->setCode('P06')
             ->setType(CouponTypeEnum::Percent)
-            ->setValue('10'));
+            ->setValue('6'));
 
 
         $manager->flush();

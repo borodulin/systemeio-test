@@ -25,7 +25,8 @@ class ApiFormResolver implements ArgumentValueResolverInterface
         if (!$type || !class_exists($type)) {
             return false;
         }
-        return $argument->getAttributes(ApiForm::class) > 0;
+
+        return \count($argument->getAttributes(ApiForm::class)) > 0;
     }
 
     public function resolve(Request $request, ArgumentMetadata $argument): iterable
@@ -62,10 +63,10 @@ class ApiFormResolver implements ArgumentValueResolverInterface
                 yield $form->getData();
             } else {
                 $errors = $this->processErrors($form);
+
                 throw new ValidationException($errors);
             }
         }
-
     }
 
     private function processErrors(FormInterface $form): array

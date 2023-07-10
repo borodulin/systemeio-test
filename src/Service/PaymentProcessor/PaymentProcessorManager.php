@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\PaymentProcessor;
 
+use App\Entity\Enum\PaymentProcessorEnum;
 use App\Service\PaymentProcessor\Integration\PaypalPaymentProcessor;
 use App\Service\PaymentProcessor\Integration\StripePaymentProcessor;
 
@@ -15,12 +16,11 @@ class PaymentProcessorManager
     ) {
     }
 
-    public function getPaymentProcessor(string $name): ?PaymentProcessorInterface
+    public function getPaymentProcessor(PaymentProcessorEnum $paymentProcessor): PaymentProcessorInterface
     {
-        return match ($name) {
-            'paypal' => $this->paypalPaymentProcessor,
-            'stripe' => $this->stripePaymentProcessor,
-            default => null,
+        return match ($paymentProcessor) {
+            PaymentProcessorEnum::Paypal => $this->paypalPaymentProcessor,
+            PaymentProcessorEnum::Stripe => $this->stripePaymentProcessor,
         };
     }
 }

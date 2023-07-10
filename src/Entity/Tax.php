@@ -9,7 +9,7 @@ use App\Repository\TaxRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: TaxRepository::class)]
-#[ORM\UniqueConstraint(fields: ['countryCode'], options: ['where' => '(terminatedAt IS NULL)'])]
+#[ORM\UniqueConstraint(fields: ['countyCode'], options: ['where' => '(terminated_at IS NULL)'])]
 class Tax
 {
     use IdTrait;
@@ -20,7 +20,7 @@ class Tax
     #[ORM\Column(type: 'integer')]
     private int $value;
 
-    #[ORM\Column(type: 'datetime')]
+    #[ORM\Column(type: 'datetime', nullable: true)]
     private ?\DateTimeInterface $terminatedAt = null;
 
     public function getCountyCode(): string

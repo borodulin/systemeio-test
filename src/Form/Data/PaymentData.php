@@ -16,5 +16,5 @@ class PaymentData
 
     public ?Coupon $coupon = null;
 
-    public PaymentProcessorEnum $paymentProcessor;
+    public string $paymentProcessor;
 }

@@ -21,6 +21,9 @@ class TaxFixtures extends Fixture
         $manager->persist((new Tax())
             ->setCountyCode('GR')
             ->setValue(24));
+        $manager->persist((new Tax())
+            ->setCountyCode('FR')
+            ->setValue(26));
 
         $manager->flush();
     }

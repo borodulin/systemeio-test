@@ -19,4 +19,14 @@ class TaxRepository extends ServiceEntityRepository
         parent::__construct($registry, Tax::class);
     }
 
+    public function findActualByCountryCode(string $countryCode): ?Tax
+    {
+        return $this->createQueryBuilder('tax')
+            ->andWhere('tax.terminatedAt IS NULL')
+            ->andWhere('tax.countyCode = :countyCode')
+            ->setParameter('countyCode', $countryCode)
+            ->getQuery()
+            ->getOneOrNullResult();
+    }
+
 }

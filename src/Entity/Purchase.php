@@ -14,20 +14,21 @@ class Purchase
     use IdTrait;
 
     #[ORM\ManyToOne(targetEntity: Product::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private Product $product;
 
     #[ORM\Column(type: 'string')]
     private string $taxNumber;
 
     #[ORM\ManyToOne(targetEntity: Coupon::class)]
+    #[ORM\JoinColumn(onDelete: 'SET NULL')]
     private ?Coupon $coupon = null;
 
     #[ORM\Column(type: 'string', enumType: PaymentProcessorEnum::class)]
     private PaymentProcessorEnum $paymentProcessor;
 
     #[ORM\ManyToOne(targetEntity: Tax::class)]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(nullable: false, onDelete: 'CASCADE')]
     private Tax $tax;
 
     #[ORM\Column(type: 'decimal', precision: 10, scale: 2)]
