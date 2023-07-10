@@ -16,8 +16,7 @@ services:
 ###< doctrine/doctrine-bundle ###
 
   php:
-    image: php:8.1-fpm
-    working_dir: /app
+    build: ./docker/php
     volumes:
       - .:/app
     depends_on:
