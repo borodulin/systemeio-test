@@ -23,8 +23,8 @@ class TaxRepository extends ServiceEntityRepository
     {
         return $this->createQueryBuilder('tax')
             ->andWhere('tax.terminatedAt IS NULL')
-            ->andWhere('tax.countyCode = :countyCode')
-            ->setParameter('countyCode', $countryCode)
+            ->andWhere('tax.countryCode = :countryCode')
+            ->setParameter('countryCode', $countryCode)
             ->getQuery()
             ->getOneOrNullResult();
     }

@@ -26,8 +26,8 @@ final class Version20230710150307 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_6117D13B4584665A ON purchase (product_id)');
         $this->addSql('CREATE INDEX IDX_6117D13B66C5951B ON purchase (coupon_id)');
         $this->addSql('CREATE INDEX IDX_6117D13BB2A824D8 ON purchase (tax_id)');
-        $this->addSql('CREATE TABLE tax (id SERIAL NOT NULL, county_code VARCHAR(255) NOT NULL, value INT NOT NULL, terminated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_8E81BA7625103594 ON tax (county_code) WHERE (terminated_at IS NULL)');
+        $this->addSql('CREATE TABLE tax (id SERIAL NOT NULL, country_code VARCHAR(255) NOT NULL, value INT NOT NULL, terminated_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE UNIQUE INDEX UNIQ_8E81BA7625103594 ON tax (country_code) WHERE (terminated_at IS NULL)');
         $this->addSql('ALTER TABLE purchase ADD CONSTRAINT FK_6117D13B4584665A FOREIGN KEY (product_id) REFERENCES product (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE purchase ADD CONSTRAINT FK_6117D13B66C5951B FOREIGN KEY (coupon_id) REFERENCES coupon (id) ON DELETE SET NULL NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE purchase ADD CONSTRAINT FK_6117D13BB2A824D8 FOREIGN KEY (tax_id) REFERENCES tax (id) ON DELETE CASCADE NOT DEFERRABLE INITIALLY IMMEDIATE');

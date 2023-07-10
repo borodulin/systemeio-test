@@ -13,16 +13,16 @@ class TaxFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         $manager->persist((new Tax())
-            ->setCountyCode('DE')
+            ->setCountryCode('DE')
             ->setValue(19));
         $manager->persist((new Tax())
-            ->setCountyCode('IT')
+            ->setCountryCode('IT')
             ->setValue(22));
         $manager->persist((new Tax())
-            ->setCountyCode('GR')
+            ->setCountryCode('GR')
             ->setValue(24));
         $manager->persist((new Tax())
-            ->setCountyCode('FR')
+            ->setCountryCode('FR')
             ->setValue(26));
 
         $manager->flush();
